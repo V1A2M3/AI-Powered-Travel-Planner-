@@ -5,10 +5,25 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.output_parsers import StrOutputParser
 from deep_translator import GoogleTranslator
 from dotenv import load_dotenv
+import google.generativeai as genai
 
 # Load API Keys
 load_dotenv()
 GOOGLE_GENAI_API_KEY = os.getenv("AIzaSyBp9HTFCVniu253dllKqReHaPzE_BvjSDU")
+
+# Check if API Key is valid
+if not GOOGLE_GENAI_API_KEY:
+    st.error("⚠️ Google Gemini API Key is missing. Please set it in your `.env` file.")
+    st.stop()
+
+# Test API Key
+try:
+    genai.configure(api_key=GOOGLE_GENAI_API_KEY)
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    response = model.generate_content("Test")
+except Exception as e:
+    st.error(f"⚠️ Invalid Google Gemini API Key: {e}")
+    st.stop()
 
 # Set up Streamlit UI
 st.set_page_config(page_title="AI-Travel Planner", layout="centered", page_icon="✈️")
@@ -58,12 +73,13 @@ if st.button(translate_text("Get Travel Plan", target_lang_code)):
                 - Travel time
                 - Additional details (stops, layovers, etc.)
                 - Best recommended travel mode & time
+                Keep responses **under 100 words** for speed.
                 """),
                 HumanMessagePromptTemplate.from_template("Find travel options from {source} to {destination} with estimated costs.")
             ])
             
-            # Google Gemini AI Model
-            chat_model = ChatGoogleGenerativeAI(api_key=GOOGLE_GENAI_API_KEY, model="gemini-2.0-pro")
+            # Google Gemini AI Model (Faster)
+            chat_model = ChatGoogleGenerativeAI(api_key=GOOGLE_GENAI_API_KEY, model="gemini-1.5-flash")
             parser = StrOutputParser()
             
             # AI Chat Chain
