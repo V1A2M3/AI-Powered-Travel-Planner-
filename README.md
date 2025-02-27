@@ -1,5 +1,7 @@
 🛫 AI-Powered Travel Planner (Multi-Language & AI Recommendations)
+
 🌍 Find the best travel options between any two locations using AI-powered recommendations and real-time travel information.
+
 ✨ Supports multiple Indian & global languages and integrates Google Places API for real-time city/place details.
 
 🚀 Features
@@ -99,6 +101,7 @@ ini
 Copy
 Edit
 GOOGLE_PLACES_API_KEY=your_google_places_api_key
+
 🚀 How It Works
 ✅ Step 1: Select your language from the dropdown menu.
 ✅ Step 2: Enter source & destination locations.
