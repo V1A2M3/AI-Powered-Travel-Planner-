@@ -9,7 +9,7 @@ import google.generativeai as genai
 
 # Load API Keys
 load_dotenv()
-GOOGLE_GENAI_API_KEY = os.getenv("AIzaSyBp9HTFCVniu253dllKqReHaPzE_BvjSDU")
+GOOGLE_GENAI_API_KEY = os.getenv("AIzaSyAPECPvgOQcYhZ4-Ch-mt17y4f4Xax7u4I")
 
 # Check if API Key is valid
 if not GOOGLE_GENAI_API_KEY:
