@@ -6,4 +6,4 @@ langchain
 langchain_core
 openai
 google-generativeai
-
+googletrans==4.0.0-rc1
