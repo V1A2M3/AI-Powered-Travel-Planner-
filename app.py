@@ -58,7 +58,7 @@ if st.button(translate_text("Get Travel Plan", target_lang_code)):
             ])
             
             # Google Gemini AI Model
-            chat_model = ChatGoogleGenerativeAI(api_key="YOUR_GOOGLE_GENAI_API_KEY", model="gemini-2.0-flash-exp")
+            chat_model = ChatGoogleGenerativeAI(api_key="AIzaSyAPECPvgOQcYhZ4-Ch-mt17y4f4Xax7u4I", model="gemini-2.0-flash-exp")
             parser = StrOutputParser()
             
             # AI Chat Chain
