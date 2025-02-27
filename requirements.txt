@@ -1,6 +1,9 @@
 streamlit
 requests
 python-dotenv
-pydantic<2
-langchain==0.0.304
+pydantic>=2
+langchain
+langchain_core
 openai
+google-generativeai
+
