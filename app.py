@@ -7,13 +7,13 @@ from deep_translator import GoogleTranslator
 from dotenv import load_dotenv
 import google.generativeai as genai
 
-# Load API Keys
+# Load API Keys (Supports both local `.env` and Streamlit Cloud `secrets.toml`)
 load_dotenv()
-GOOGLE_GENAI_API_KEY = os.getenv("AIzaSyAPECPvgOQcYhZ4-Ch-mt17y4f4Xax7u4I")
+GOOGLE_GENAI_API_KEY = os.getenv("GOOGLE_GENAI_API_KEY") or st.secrets.get("GOOGLE_GENAI_API_KEY")
 
 # Check if API Key is valid
 if not GOOGLE_GENAI_API_KEY:
-    st.error("⚠️ Google Gemini API Key is missing. Please set it in your `.env` file.")
+    st.error("⚠️ Google Gemini API Key is missing. Add it to `.env` (local) or `secrets.toml` (Streamlit Cloud).")
     st.stop()
 
 # Test API Key
