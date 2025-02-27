@@ -3,7 +3,7 @@ import streamlit as st
 from langchain_core.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.output_parsers import StrOutputParser
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 from dotenv import load_dotenv
 
 # Load API Keys
@@ -14,9 +14,6 @@ GOOGLE_GENAI_API_KEY = os.getenv("AIzaSyBp9HTFCVniu253dllKqReHaPzE_BvjSDU")
 st.set_page_config(page_title="AI-Travel Planner", layout="centered", page_icon="✈️")
 st.title("🌍 AI-Travel Planner")
 st.write("Enter details to get estimated travel costs for various travel modes (cab, train, bus, flights).")
-
-# Initialize Translator
-translator = Translator()
 
 # Supported Indian Languages
 INDIAN_LANGUAGES = {
@@ -39,7 +36,7 @@ target_lang_code = INDIAN_LANGUAGES[selected_lang]
 # Function to Translate Text
 def translate_text(text, target_lang):
     try:
-        return translator.translate(text, dest=target_lang).text
+        return GoogleTranslator(source="auto", target=target_lang).translate(text)
     except:
         return text  # Return original text if translation fails
 
